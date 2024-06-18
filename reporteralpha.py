@@ -1,4 +1,4 @@
-# ReporterAlpha
+# stupid_hacker
 import telebot
 import subprocess
 import requests
@@ -6,10 +6,10 @@ import datetime
 import os
 
 # insert your Telegram bot token here
-bot = telebot.TeleBot('BOT-TOKEN')
+bot = telebot.TeleBot('7189564171:AAG-cT6YGFogU0QvEtlCdyl48MO9HXv_i_E')
 
 # Admin user IDs
-admin_id = ["YOUR-UID"]
+admin_id = ["1302901250"]
 
 # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -223,7 +223,7 @@ def handle_bgmi(message):
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
             if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 300:
-                response = "You Are On Cooldown. Please Wait 5min Before Running The /bgmi Command Again."
+                response = "मेरे भाई आराम से. Please Wait 5min Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -244,7 +244,7 @@ def handle_bgmi(message):
                 subprocess.run(full_command, shell=True)
                 response = f"BGMI Attack Finished. Target: {target} Port: {port} Time: {time}"
         else:
-            response = "Usage :- /bgmi <target> <port> <time>"  # Updated command syntax
+            response = "Usage :- /bgmi <target> <port> <time> Time sould br 180 seconds"  # Updated command syntax
     else:
         response = "You Are Not Authorized To Use This Command."
 
@@ -284,7 +284,7 @@ def show_help(message):
 To See Admin Commands:
 /admincmd : Shows All Admin Commands.
 
-Buy From :- @ReporterAlpha
+Buy From :- @stupid_hacker
 '''
     for handler in bot.message_handlers:
         if hasattr(handler, 'commands'):
@@ -301,14 +301,17 @@ def welcome_start(message):
     user_name = message.from_user.first_name
     response = f'''👋🏻Welcome, {user_name}!
 Try To Run This Command : /help 
-Join :- t.me/ChannelLink'''
+Join :- https://t.me/+Jm-i02cypMwyMmFl'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['rules'])
 def welcome_rules(message):
     user_name = message.from_user.first_name
     response = f'''{user_name} Please Follow These Rules:
-There are no rules in our Bot.'''
+    Use only 180 seconds
+    After attack wait for 5 minutes
+    Don't send unnecessary message to bot
+    If you don't follow rules you will be banned from bot '''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['plan'])
@@ -322,9 +325,10 @@ After Attack Limit : No Limit
 Concurrents Attack : 3
 
 Price Lists :
-Day : 300 Rs
-Week : 1000 Rs
-Month : 2000 Rs
+Day : 200 Rs
+Week : 800 Rs
+Month : 1800 Rs
+DM : @stupid_hacker
 '''
     bot.reply_to(message, response)
 
@@ -349,7 +353,7 @@ def broadcast_message(message):
     if user_id in admin_id:
         command = message.text.split(maxsplit=1)
         if len(command) > 1:
-            message_to_broadcast = "Message To All Users By @ReporterAlpha:\n\n" + command[1]
+            message_to_broadcast = "Message To All Users By @stupid_hacker:\n\n" + command[1]
             with open(USER_FILE, "r") as file:
                 user_ids = file.read().splitlines()
                 for user_id in user_ids:
@@ -365,4 +369,4 @@ def broadcast_message(message):
 
     bot.reply_to(message, response)
 bot.polling()
- #ReporterAlpha
+ #stupidhacker
